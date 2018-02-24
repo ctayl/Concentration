@@ -1,0 +1,6 @@
+.panel-body {
+    background-image: url("/playing-card-back.png");
+    height: 300px;
+    width: 213px;
+    background-size: contain;
+}
