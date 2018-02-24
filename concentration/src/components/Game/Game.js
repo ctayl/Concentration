@@ -26,7 +26,6 @@ class Game extends Component {
     }
 
     draw = (e) => {
-        console.log(this.data);
         API.draw(this.state.deckId).then(res => {
             console.log(res);
             this.setState({
