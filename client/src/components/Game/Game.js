@@ -47,10 +47,10 @@ class Game extends Component {
                     .catch(err => console.log(err));
             } else {
                 setTimeout(() => {
-                    // this.setState({
-                    //     picked: false,
-                    //     cards: new Array(this.state.cards.length)
-                    // });
+                    this.setState({
+                        picked: false,
+                        cards: new Array(this.state.cards.length)
+                    });
                     API.flip(this.state.deckId)
                         .then(res => {
                             console.log(res);
