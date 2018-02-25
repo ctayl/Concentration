@@ -3,14 +3,11 @@ import Card from "../Card"
 
 class Cards extends Component {
 
-
     render() {
-        console.log(this.props);
         if (this.props.cards) {
             let list = this.props.cards.map(card => {
-                console.log(card);
                 return (
-                    <Card card={card} key={card.code} draw={this.props.draw} />
+                    <Card card={card} key={card.code} draw={this.props.draw} cardHandler={this.props.cardHandler} />
                 )
             });
             return (

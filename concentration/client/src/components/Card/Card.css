@@ -1,6 +1,10 @@
 .panel-body {
     background-image: url("/playing-card-back.png");
-    height: 300px;
-    width: 213px;
+    height: 198px;
+    width: 140px;
     background-size: contain;
+}
+
+.col-xs-1 {
+    width: 7.6%
 }

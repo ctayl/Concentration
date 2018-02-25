@@ -18,11 +18,11 @@ class Card extends Component {
             picked: true,
             display: this.state.image
         });
-        this.props.draw(this.state);
+        this.props.cardHandler(this.state);
     };
 
     render = () => (
-        <div className="col-md-3">
+        <div className="col-xs-1">
             <div className="panel panel-default">
                 <div className={"panel-body"} onClick={this.pickedHandler} data={this.props.card.code} style={{ backgroundImage: `url("${this.state.display}")` }}>
 

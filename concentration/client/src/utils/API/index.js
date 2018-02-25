@@ -6,7 +6,7 @@ export default {
 
     shuffle: deckId => axios.get(`http://localhost:3001/deck/${deckId}/shuffle`),
 
-    all: deckId => axios.get(`http://localhost:3001/deck/${deckId}/all`),
+    flip: deckId => axios.get(`http://localhost:3001/deck/${deckId}/pile/game`),
 
-    draw: (deckId, code) => axios.get(`http://localhost:3001/deck/${deckId}/draw/${code}`)
+    draw: (deckId, cards) => axios.get(`http://localhost:3001/deck/${deckId}/pile/game/draw/${cards}`)
 }
