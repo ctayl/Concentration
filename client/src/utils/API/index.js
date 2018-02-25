@@ -6,7 +6,7 @@ export default {
 
     shuffle: deckId => axios.get(`https://concentration10.herokuapp.com/deck/${deckId}/shuffle`),
 
-    flip: deckId => axios.get(`https://concentration10.herokuapp.com/${deckId}/pile/game`),
+    flip: deckId => axios.get(`https://concentration10.herokuapp.com/deck/${deckId}/pile/game`),
 
     draw: (deckId, cards) => axios.get(`https://concentration10.herokuapp.com/deck/${deckId}/pile/game/draw/${cards}`)
 }
