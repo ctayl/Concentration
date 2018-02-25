@@ -49,7 +49,7 @@ class Game extends Component {
                 setTimeout(() => {
                     this.setState({
                         picked: false,
-                        cards: []
+                        cards: new Array(this.state.cards.length)
                     });
                     API.flip(this.state.deckId)
                         .then(res => {
