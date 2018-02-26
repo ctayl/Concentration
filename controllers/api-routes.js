@@ -22,7 +22,13 @@ router.get("/new", (req, res) => {
                     axios.get(`https://deckofcardsapi.com/api/deck/${response.data.deck_id}/pile/game/add/${query}`)
                         .then(pile => {
                             axios.get(`https://deckofcardsapi.com/api/deck/${response.data.deck_id}/pile/game/list`)
-                                .then(cards => res.json(cards.data))
+                                .then(cards => {
+                                    cards.data.piles.game.cards = cards.data.piles.game.cards.map(card => {
+                                        card.picked = false;
+                                        return card
+                                    });
+                                    res.json(cards.data)
+                                })
                                 .catch(err => console.log(err));
                         })
                         .catch(err => console.log(err));
@@ -35,7 +41,13 @@ router.get("/new", (req, res) => {
 // List all cards in the game pile
 router.get("/:deckId/pile/game", (req, res) => {
     axios.get(`https://deckofcardsapi.com/api/deck/${req.params.deckId}/pile/game/list`)
-        .then(cards => res.json(cards.data))
+        .then(cards => {
+            cards.data.piles.game.cards = cards.data.piles.game.cards.map(card => {
+                card.display = "/playing-card-back.png";
+                return card
+            });
+            res.json(cards.data)
+        })
         .catch(err => console.log(err));
 });
 

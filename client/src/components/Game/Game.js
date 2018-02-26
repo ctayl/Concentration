@@ -11,7 +11,7 @@ class Game extends Component {
     };
 
     componentDidMount = () => {
-        console.log("mounted");
+        console.log(this.children);
         API.newDeck().then(res => {
             console.log(res)
             this.setState({
@@ -22,14 +22,22 @@ class Game extends Component {
         });
     }
 
-    win = () => {
+    flip = (card) => {
+        console.log(card)
+    }
+
+    componentDidUpdate = () => {
+        console.log("update");
     }
 
     // Used to manage the cards being picked
     cardHandler = card => {
+        console.log(this.state.picked);
         if (!this.state.picked) {
+            console.log("test");
             this.setState({
-                picked: card.code
+                picked: card.code,
+                index: card.index
             });
         } else {
             if (this.state.picked[0] === card.code[0]) {
@@ -40,26 +48,18 @@ class Game extends Component {
                         .then(res => {
                             console.log(res);
                             this.setState({
-                                cards: res.data.piles.game.cards
+                                cards: res.data.piles.game.cards,
+                                picked: false
                             })
                         })
                         .catch(err => console.log(err)))
                     .catch(err => console.log(err));
             } else {
                 setTimeout(() => {
-                    this.setState({
-                        picked: false,
-                        cards: new Array(this.state.cards.length)
-                    });
-                    API.flip(this.state.deckId)
-                        .then(res => {
-                            console.log(res);
-                            this.setState({
-                                cards: res.data.piles.game.cards
-                            })
-                        })
-                        .catch(err => console.log(err))
+                    console.log(this);
+                    this.setState({picked: "reset"})
                 }, 1000);
+                setTimeout(() => this.setState({ picked: false }), 1100);
             }
         }
     }
@@ -84,7 +84,7 @@ class Game extends Component {
     render = () => (
         <div>
             {console.log(this.state)}
-            <Cards cards={this.state.cards} draw={this.draw} cardHandler={this.cardHandler} />
+            <Cards picked={this.state.picked} cards={this.state.cards} draw={this.draw} cardHandler={this.cardHandler} flip={this.flip} />
         </div>
     )
 }

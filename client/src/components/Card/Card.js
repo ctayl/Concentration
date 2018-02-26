@@ -9,14 +9,29 @@ class Card extends Component {
             code: props.card.code,
             image: props.card.image,
             display: "/playing-card-back.png",
+            index: props.index,
             picked: false
         };
     };
+
+    componentDidUpdate = () => {
+        if (this.props.picked === "reset") {
+            if (this.state.display === "/playing-card-back.png") {
+                return
+            } else {
+                this.setState({
+                    display: "/playing-card-back.png",
+                    picked: false
+                })
+            }
+        }
+    }
 
     pickedHandler = e => {
         if (this.state.picked) {
             return console.log(this.state);
         }
+        this.props.flip(this.state);
         this.setState({
             picked: true,
             display: this.state.image
@@ -26,7 +41,6 @@ class Card extends Component {
 
     render = () => (
         <div className="col-xs-1">
-        {console.log(this.state)}
             <div className="panel panel-default">
                 <div className={"panel-body"} onClick={this.pickedHandler} data={this.props.card.code} style={{ backgroundImage: `url("${this.state.display}")` }}>
 
