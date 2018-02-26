@@ -6,8 +6,7 @@ class Game extends Component {
 
     state = {
         cards: [],
-        picked: false,
-        cardsRemaining: 52
+        picked: false
     };
 
     componentDidMount = () => {
@@ -28,6 +27,7 @@ class Game extends Component {
 
     componentDidUpdate = () => {
         console.log("update");
+    
     }
 
     // Used to manage the cards being picked
@@ -48,9 +48,12 @@ class Game extends Component {
                         .then(res => {
                             console.log(res);
                             this.setState({
+                                cards: []
+                            });
+                            this.setState({
                                 cards: res.data.piles.game.cards,
                                 picked: false
-                            })
+                            });
                         })
                         .catch(err => console.log(err)))
                     .catch(err => console.log(err));
