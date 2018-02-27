@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const router = express.Router();
 
-// *** Deck Management ***
+//=============== Deck Management //===============
 
 // New deck
 router.get("/new", (req, res) => {
@@ -56,19 +56,6 @@ router.get("/:deckId/pile/game/draw/:cards", (req, res) => {
     console.log(req.params);
     axios.get(`https://deckofcardsapi.com/api/deck/${req.params.deckId}/pile/game/draw/?cards=${req.params.cards}`)
         .then(cards => res.json(cards.data))
-        .catch(err => console.log(err));
-});
-
-router.get("/:deckId/shuffle", (req, res) => {
-    axios.get(`https://deckofcardsapi.com/api/deck/${req.params.deckId}/shuffle`)
-        .then(data => res.json(data.data))
-        .catch(err => console.log(err));
-});
-
-// Draws a card
-router.get("/:deckId/draw/:card", (req, res) => {
-    axios.get(`https://deckofcardsapi.com/api/deck/${req.params.deckId}/pile/player/add/?cards=${card}`)
-        .then(response => res.json(response.data))
         .catch(err => console.log(err));
 });
 

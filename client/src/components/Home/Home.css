@@ -1,0 +1,24 @@
+body {
+    background-image: url("/images.jpg");
+    background-size: cover;
+    font-family: 'Dosis', sans-serif;
+}
+
+#wrapper {
+    padding-top: 15px;
+}
+
+.jumbotron {
+    background: #eef3d9b9;
+}
+
+li {
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+
+

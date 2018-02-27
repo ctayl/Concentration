@@ -29,9 +29,8 @@ class Card extends Component {
 
     pickedHandler = e => {
         if (this.state.picked) {
-            return console.log(this.state);
+            return
         }
-        this.props.flip(this.state);
         this.setState({
             picked: true,
             display: this.state.image

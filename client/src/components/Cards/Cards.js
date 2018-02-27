@@ -3,12 +3,8 @@ import Card from "../Card"
 
 class Cards extends Component {
 
-    componentDidUpdate = () => {
-        this.render();
-    }
-
     render() {
-        console.log(this.props.cards);
+        // If there are cards, assemble and return them
         if (!this.props.cards) {
             return <div />
         } else {
@@ -16,13 +12,11 @@ class Cards extends Component {
             let list = this.props.cards.map(card => {
                 count++;
                 return (
-                    <Card picked={this.props.picked} card={card} index={count} key={count} draw={this.props.draw} cardHandler={this.props.cardHandler} flip={this.props.flip} />
+                    <Card picked={this.props.picked} card={card} index={count} key={count} cardHandler={this.props.cardHandler} />
                 )
-               
             });
-            console.log(list);
             return (
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
                         {list}
                     </div>
@@ -31,6 +25,5 @@ class Cards extends Component {
         }
     }
 }
-
 
 export default Cards;
